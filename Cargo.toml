@@ -5,7 +5,4 @@ authors = ["Martin Levesque <martin.levesque@ubisoft.com>"]
 
 [dependencies]
 iron = "*"
-router = "*"
-hyper = "*"
-rustc-serialize = "*"
-dotenv = "*"
+params = "*"
