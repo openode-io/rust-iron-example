@@ -4,18 +4,18 @@ WORKDIR /opt/app
 
 ENV PORT=80
 
-RUN touch /usr/bin/start.sh # this is the script which will run on start
+RUN touch /boot.sh # this is the script which will run on boot
 
 # if you need redis, uncomment the lines below
 # RUN apk --update add redis
-# RUN echo 'redis-server &' >> /usr/bin/start.sh
+# RUN echo 'redis-server &' >> /boot.sh
 
 # daemon for cron jobs
-# RUN echo 'echo will install crond...' >> /usr/bin/start.sh
-# RUN echo 'crond' >> /usr/bin/start.sh
+# RUN echo 'echo will install crond...' >> /boot.sh
+# RUN echo 'crond' >> /boot.sh
 
-RUN echo 'cargo install --force' >> /usr/bin/start.sh
-RUN echo 'cargo build --release' >> /usr/bin/start.sh
+RUN echo 'cargo install --force' >> /boot.sh
+RUN echo 'cargo build --release' >> /boot.sh
 
 # start it!
-RUN echo 'target/release/rtest' >> /usr/bin/start.sh
+CMD sh /boot.sh && target/release/rtest
